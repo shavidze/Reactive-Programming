@@ -1,3 +1,13 @@
+// base functions
+
+
+const tap = f => x => { f(x); return x; }
+
+const pipe = (...fs) => x => fs.reduce(((acc,f) => f(acc)),x);
+
+//
+
+
 class Observable {
 
     constructor(){
@@ -17,12 +27,12 @@ class Observable {
 
 const observable = new Observable();
 
-const tap = f => x => { f(x); return x; }
-
-const pipe = (f,g) => x => g(f(x));
 
 
-observable.subscribe(pipe(tap(console.log),console.log));
+const double = (x) => x + x;
+
+observable.subscribe(pipe(double,double,tap(console.log)));
+
 
 
 observable.emit(5);
