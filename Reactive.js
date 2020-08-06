@@ -31,6 +31,8 @@ const observable = new Observable();
 
 const double = (x) => x + x;
 
+console.log(tap(console.log));
+
 observable.subscribe(pipe(double,double,tap(console.log)));
 
 
